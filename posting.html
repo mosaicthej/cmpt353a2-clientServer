@@ -18,55 +18,59 @@
   </ul>
 
   <script>
-    getMessages()
-    const form = document.querySelector('#form')
-    form.addEventListener('submit', (e) => {
-      e.preventDefault()
-      const topic = document.querySelector("#topic")
-      const data = document.querySelector("#data")
-      postMessage(topic.value, data.value)
+    getMessages()       // get messages on page load
+    const form = document.querySelector('#form')    // get form
+    form.addEventListener('submit', (e) => {        // add event listener to form with type `submit`
+      e.preventDefault()                            // prevent default form submission (page reload)
+      const topic = document.querySelector("#topic")  // data in "topic" input
+      const data = document.querySelector("#data")    // data in "data" input
+      postMessage(topic.value, data.value)            // post message to server
     })
 
     function getMessages() {
-      const xhr = new XMLHttpRequest();
-      xhr.open("GET", '/postmessage', true);
-      xhr.onreadystatechange = () => { // Call a function when the state changes.
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-          if (xhr.status === 200) {
-            const posts = document.querySelector("#posts")
-            posts.innerHTML = ''
-            const res = JSON.parse(xhr.responseText)
-            res.forEach(r => {
+      const xhr = new XMLHttpRequest();             // xhr is the XMLHttpRequest object
+      // configure the xhr object:
+
+      xhr.open("GET", '/postmessage', true);        // open a GET request to /postmessage with `async` set to true
+      xhr.onreadystatechange = () => {             // add event listener to xhr object (when the state changes)
+        if (xhr.readyState === XMLHttpRequest.DONE) { // if the state is DONE
+          if (xhr.status === 200) {                 // if the xhr is successful
+            const posts = document.querySelector("#posts")  // select the `posts` element
+            posts.innerHTML = ''                  // clear the posts
+            const res = JSON.parse(xhr.responseText)  // read the file as JSON
+            res.forEach(r => {                  
+              // for each entry in the JSON array
+              // create a new list item with jQuery and append it to the `posts` element
               const li = document.createElement('li')
               li.innerHTML = `Topic: ${r.topic}, Data: ${r.data}, Date Created: ${new Date(r.date).toLocaleString()}`
               posts.appendChild(li)
             })
           } else {
-            alert("Error getting posts:", xhr.responseText)
+            alert("Error getting posts:", xhr.responseText) // if the xhr is not successful, alert the error
           }
         }
       }
-      xhr.send();
+      xhr.send();   // send the request
     }
 
-    function postMessage(topic, data) {
-      const xhr = new XMLHttpRequest();
-      xhr.open("POST", '/postmessage', true);
+    function postMessage(topic, data) {   // post message to server
+      const xhr = new XMLHttpRequest();   // xhr is the XMLHttpRequest object
+      xhr.open("POST", '/postmessage', true); // open a POST request to /postmessage with `async` set to true
 
       //Send the proper header information along with the request
       xhr.setRequestHeader("Content-Type", "application/json");
 
-      xhr.onreadystatechange = () => { // Call a function when the state changes.
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-          if (xhr.status === 200) {
-            alert('Post saved successfully')
-            getMessages()
+      xhr.onreadystatechange = () => { // Call this function when the state changes.
+        if (xhr.readyState === XMLHttpRequest.DONE) { // if the state is DONE
+          if (xhr.status === 200) {   // if the xhr is successful
+            alert('Post saved successfully')  // alert the user
+            getMessages()  // get message (same as on page load) on the page
           } else {
-            alert('Error creating post: ' + xhr.responseText)
+            alert('Error creating post: ' + xhr.responseText) // if the xhr is not successful, alert the error
           }
         }
       }
-      xhr.send(JSON.stringify({topic, data}));
+      xhr.send(JSON.stringify({topic, data}));  // send the request with the data as JSON
     }
   </script>
 </body>
