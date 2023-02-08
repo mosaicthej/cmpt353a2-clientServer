@@ -79,9 +79,15 @@ async function getMessages(_, res) {
     res.writeHead(200);
     res.end(resText);
   } catch (err) {
-    console.log("getMessages:", err);
-    res.writeHead(500);
-    res.end(err.message);
+    // catch file not found, if file not found, return empty array
+    if (err.code === "ENOENT") {
+      res.writeHead(200);
+      res.end("[]");
+    } else {
+      console.log("getMessages:", err);
+      res.writeHead(500);
+      res.end(err.message);
+    }
   }
 }
 
