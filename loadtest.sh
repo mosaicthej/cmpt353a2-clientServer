@@ -182,4 +182,10 @@ echo $MSG_4 "1000" > $DIR_T4/time_4.txt
 cat $DIR_T4/result_4.txt | grep "Requests per second" >> $DIR_T4/time_4.txt
 cat $DIR_T4/result_4.txt | grep "Mean latency" >> $DIR_T4/time_4.txt
 
-
+# 4.5. 10000
+echo $MSG_4 "10000" > $DIR_T4/result_5.txt
+npx loadtest -n 5 -c 10000 -m POST -T $TYPE --data $DATA_0 http://localhost:8000/ >> $DIR_T4/result_5.txt
+# extract the time from the result
+echo $MSG_4 "10000" > $DIR_T4/time_5.txt
+cat $DIR_T4/result_5.txt | grep "Requests per second" >> $DIR_T4/time_5.txt
+cat $DIR_T4/result_5.txt | grep "Mean latency" >> $DIR_T4/time_5.txt
