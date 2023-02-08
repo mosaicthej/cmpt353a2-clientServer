@@ -6,7 +6,7 @@ mkdir loadtestData
 
 TEST_DIR=loadtestData
 # use `npx loadtest` to test the performance of the server
-# npm install -g loadtest
+npm install -g loadtest
 
 # the post data is a JSON array, each element has the following format:
 # {
