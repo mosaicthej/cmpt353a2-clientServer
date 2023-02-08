@@ -1,0 +1,3 @@
+with 5 requests, number of concurrent requests: 1000
+[Wed Feb 08 2023 20:57:27 GMT+0000 (Coordinated Universal Time)] INFO Requests per second: 71
+[Wed Feb 08 2023 20:57:27 GMT+0000 (Coordinated Universal Time)] INFO Mean latency:        51.3 ms

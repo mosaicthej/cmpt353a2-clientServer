@@ -1,0 +1,20 @@
+with 5 requests, number of concurrent requests: 1000
+[Wed Feb 08 2023 20:57:27 GMT+0000 (Coordinated Universal Time)] INFO Requests: 0 (0%), requests per second: 0, mean latency: 0 ms
+[Wed Feb 08 2023 20:57:27 GMT+0000 (Coordinated Universal Time)] INFO 
+[Wed Feb 08 2023 20:57:27 GMT+0000 (Coordinated Universal Time)] INFO Target URL:          http://localhost:8000/
+[Wed Feb 08 2023 20:57:27 GMT+0000 (Coordinated Universal Time)] INFO Max requests:        5
+[Wed Feb 08 2023 20:57:27 GMT+0000 (Coordinated Universal Time)] INFO Concurrency level:   1000
+[Wed Feb 08 2023 20:57:27 GMT+0000 (Coordinated Universal Time)] INFO Agent:               none
+[Wed Feb 08 2023 20:57:27 GMT+0000 (Coordinated Universal Time)] INFO 
+[Wed Feb 08 2023 20:57:27 GMT+0000 (Coordinated Universal Time)] INFO Completed requests:  5
+[Wed Feb 08 2023 20:57:27 GMT+0000 (Coordinated Universal Time)] INFO Total errors:        0
+[Wed Feb 08 2023 20:57:27 GMT+0000 (Coordinated Universal Time)] INFO Total time:          0.07078862999999999 s
+[Wed Feb 08 2023 20:57:27 GMT+0000 (Coordinated Universal Time)] INFO Requests per second: 71
+[Wed Feb 08 2023 20:57:27 GMT+0000 (Coordinated Universal Time)] INFO Mean latency:        51.3 ms
+[Wed Feb 08 2023 20:57:27 GMT+0000 (Coordinated Universal Time)] INFO 
+[Wed Feb 08 2023 20:57:27 GMT+0000 (Coordinated Universal Time)] INFO Percentage of the requests served within a certain time
+[Wed Feb 08 2023 20:57:27 GMT+0000 (Coordinated Universal Time)] INFO   50%      48 ms
+[Wed Feb 08 2023 20:57:27 GMT+0000 (Coordinated Universal Time)] INFO   90%      64 ms
+[Wed Feb 08 2023 20:57:27 GMT+0000 (Coordinated Universal Time)] INFO   95%      64 ms
+[Wed Feb 08 2023 20:57:27 GMT+0000 (Coordinated Universal Time)] INFO   99%      64 ms
+[Wed Feb 08 2023 20:57:27 GMT+0000 (Coordinated Universal Time)] INFO  100%      64 ms (longest request)
