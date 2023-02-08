@@ -1,9 +1,9 @@
 version: '3'
-services:
-  web:
-    build: .
-    command: node server.js
-    volumes:
+services: # define the services that make up the app
+  web:  # name of the service
+    build: .  # docker build the image from the Dockerfile in the current directory
+    command: node server.js # run the server at startup
+    volumes:  # mount
       - .:/usr/app
     ports:
       - "45141:8000"

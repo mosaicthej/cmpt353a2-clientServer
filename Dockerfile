@@ -1,5 +1,6 @@
 FROM node:lts-alpine3.16
 
 WORKDIR /usr/app
-COPY . .
+# Copy all files from current directory to /usr/app
+COPY . .    
 CMD ["node", "server.js"]
