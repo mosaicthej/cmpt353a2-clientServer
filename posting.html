@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+
+<body>
+  <form id="form">
+    <div>
+      <label for="topic">Topic</label>
+      <input id="topic" type="text">
+    </div>
+    <div>
+      <label for="data">Data</label>
+      <input id="data" type="text">
+    </div>
+    <input type="submit">
+  </form>
+  <ul id="posts">
+
+  </ul>
+
+  <script>
+    getMessages()
+    const form = document.querySelector('#form')
+    form.addEventListener('submit', (e) => {
+      e.preventDefault()
+      const topic = document.querySelector("#topic")
+      const data = document.querySelector("#data")
+      postMessage(topic.value, data.value)
+    })
+
+    function getMessages() {
+      const xhr = new XMLHttpRequest();
+      xhr.open("GET", '/postmessage', true);
+      xhr.onreadystatechange = () => { // Call a function when the state changes.
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+          if (xhr.status === 200) {
+            const posts = document.querySelector("#posts")
+            posts.innerHTML = ''
+            const res = JSON.parse(xhr.responseText)
+            res.forEach(r => {
+              const li = document.createElement('li')
+              li.innerHTML = `Topic: ${r.topic}, Data: ${r.data}, Date Created: ${new Date(r.date).toLocaleString()}`
+              posts.appendChild(li)
+            })
+          } else {
+            alert("Error getting posts:", xhr.responseText)
+          }
+        }
+      }
+      xhr.send();
+    }
+
+    function postMessage(topic, data) {
+      const xhr = new XMLHttpRequest();
+      xhr.open("POST", '/postmessage', true);
+
+      //Send the proper header information along with the request
+      xhr.setRequestHeader("Content-Type", "application/json");
+
+      xhr.onreadystatechange = () => { // Call a function when the state changes.
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+          if (xhr.status === 200) {
+            alert('Post saved successfully')
+            getMessages()
+          } else {
+            alert('Error creating post: ' + xhr.responseText)
+          }
+        }
+      }
+      xhr.send(JSON.stringify({topic, data}));
+    }
+  </script>
+</body>
+
+</html>

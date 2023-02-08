@@ -1,0 +1,9 @@
+version: '3'
+services:
+  web:
+    build: .
+    command: node server.js
+    volumes:
+      - .:/usr/app
+    ports:
+      - "8000:8000"
