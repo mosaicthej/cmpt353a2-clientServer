@@ -1,0 +1,3 @@
+size of data: 10MB
+[Wed Feb 08 2023 20:56:31 GMT+0000 (Coordinated Universal Time)] INFO Requests per second: 28
+[Wed Feb 08 2023 20:56:31 GMT+0000 (Coordinated Universal Time)] INFO Mean latency:        32.3 ms
